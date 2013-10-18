@@ -8,6 +8,7 @@
 
 	<modules>
 		<module>../test.maven.swt</module>
+		<module>../test.maven.swt.feature</module>
 	</modules>
 
 	<properties>
