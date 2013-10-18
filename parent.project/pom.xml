@@ -10,12 +10,19 @@
 		<module>../test.maven.swt</module>
 		<module>../test.maven.swt.feature</module>
 		<module>../test.maven.swt.updateSite</module>
+		<module>../test.maven.swt.bot</module>
 	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<swtbot>http://download.eclipse.org/technology/swtbot/releases/latest</swtbot>
 	</properties>
 	<repositories>
+		<repository>
+			<id>swtbot</id>
+			<layout>p2</layout>
+			<url>${swtbot}</url>
+		</repository>
 		<repository>
 			<id>kepler</id>
 			<layout>p2</layout>

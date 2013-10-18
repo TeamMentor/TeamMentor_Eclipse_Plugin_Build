@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>test.maven.swt.bot</artifactId>
+	<packaging>eclipse-test-plugin</packaging>
+	<properties>
+		<java.awt.headless>true</java.awt.headless>
+	</properties>
+	<parent>
+		<groupId>test.maven</groupId>
+		<artifactId>parent.project</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../parent.project</relativePath>
+	</parent>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>0.18.1</version>
+				<configuration>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>false</useUIThread>
+					<dependencies>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<groupId>test.maven</groupId>
+							<artifactId>test.maven.swt.bot</artifactId>
+						</dependency>
+						<dependency>
+							<type>p2-installable-unit</type>
+							<artifactId>org.eclipse.sdk.feature.group</artifactId>
+						</dependency>
+					</dependencies>
+					<argLine>-XstartOnFirstThread</argLine>
+					<product>org.eclipse.sdk.ide</product>
+					<application>org.eclipse.ui.ide.workbench</application>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+   
