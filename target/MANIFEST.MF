@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 1.0.0.201310181243
+Bundle-Name: Swt
+Bundle-Activator: test.maven.swt.Activator
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: test.maven.swt;singleton:=true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+
