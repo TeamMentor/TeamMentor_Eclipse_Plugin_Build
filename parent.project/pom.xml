@@ -9,6 +9,7 @@
 	<modules>
 		<module>../test.maven.swt</module>
 		<module>../test.maven.swt.feature</module>
+		<module>../test.maven.swt.updateSite</module>
 	</modules>
 
 	<properties>
