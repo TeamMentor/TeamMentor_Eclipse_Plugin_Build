@@ -73,6 +73,10 @@ public class UITest {
 		SWTBotShell shell = bot.shell("New Project");
 		assertNotNull(shell);
 		shell.activate();
+		bot.tree().expandNode("General").select("Project");
+		bot.button("Next >").click();
+		bot.textWithLabel("Project name:").setText("SWTBot Test Project");
+		bot.button("Finish").click();
 		
 	}	
 }
