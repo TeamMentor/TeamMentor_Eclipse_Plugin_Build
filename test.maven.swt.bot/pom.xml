@@ -19,9 +19,7 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>0.18.1</version>
-				<configuration>
-					<useUIHarness>true</useUIHarness>
-					<useUIThread>false</useUIThread>
+				<configuration>					
 					<dependencies>
 						<dependency>
 							<type>p2-installable-unit</type>
@@ -33,8 +31,11 @@
 							<artifactId>org.eclipse.sdk.feature.group</artifactId>
 						</dependency>
 					</dependencies>
+					
+					<useUIHarness>true</useUIHarness>              	
+              		<useUIThread>false</useUIThread>
 					<argLine>-XstartOnFirstThread</argLine>
-					<product>org.eclipse.sdk.ide</product>
+					<product>org.eclipse.sdk.ide</product>										
 					<application>org.eclipse.ui.ide.workbench</application>
 				</configuration>
 			</plugin>
