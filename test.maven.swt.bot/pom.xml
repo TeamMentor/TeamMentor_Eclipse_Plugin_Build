@@ -24,7 +24,7 @@
 						<dependency>
 							<type>p2-installable-unit</type>
 							<groupId>test.maven</groupId>
-							<artifactId>test.maven.swt.bot</artifactId>
+							<artifactId>test.maven.swt</artifactId>
 						</dependency>
 						<dependency>
 							<type>p2-installable-unit</type>

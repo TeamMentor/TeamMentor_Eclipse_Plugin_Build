@@ -33,13 +33,13 @@ public class UITest {
 	public void did_we_get_here() 
 	{
 		assertTrue(true);
-		bot.captureScreenshot("did_we_get_here.jpeg");
+		bot.captureScreenshot("screenshots/did_we_get_here.jpeg");
 	}
 	@Test
 	public void SWTWorkbenchBot_OK() 
 	{
 		assertNotNull(bot);
-		bot.captureScreenshot("SWTWorkbenchBot_OK.jpeg");
+		bot.captureScreenshot("screenshots/SWTWorkbenchBot_OK.jpeg");
 	}
 	@Test
 	public void SWTWorkbenchBot_ActionShell_Text() 
@@ -48,7 +48,7 @@ public class UITest {
 		String text = shell.getText();
 		assertNotNull(text);
 		//assertEquals("Java - Eclipse SDK", text); // its 'Resource - Eclipse Platform' when running from eclipse
-		bot.captureScreenshot("SWTWorkbenchBot_ActionShell_Text.jpeg");
+		bot.captureScreenshot("screenshots/SWTWorkbenchBot_ActionShell_Text.jpeg");
 	}
 	
 	@Test
@@ -65,7 +65,8 @@ public class UITest {
 		shell.activate();
 		SWTBotButton button =  shell.bot().button("OK");
 		assertNotNull(button);
-		button.click();		
+		button.click();
+		bot.captureScreenshot("screenshots/SWTWorkbenchBot_ActionShell_ClickOnMenu.jpeg");
 	}
 	
 
@@ -80,7 +81,7 @@ public class UITest {
 		bot.button("Next >").click();
 		bot.textWithLabel("Project name:").setText("SWTBot Test Project");
 		bot.button("Finish").click();
-		bot.captureScreenshot("SWTWorkbenchBot_ActionShell_NewProject.jpeg");
+		bot.captureScreenshot("screenshots/SWTWorkbenchBot_ActionShell_NewProject.jpeg");
 		
 	}	
 }
