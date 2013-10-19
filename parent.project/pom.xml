@@ -14,6 +14,7 @@
 	</modules>
 
 	<properties>
+	    <tycho-version>0.18.1</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<swtbot>http://download.eclipse.org/technology/swtbot/releases/latest</swtbot>
 	</properties>
@@ -34,7 +35,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>0.18.1</version>
+				<version>${tycho-version}</version>				
 				<extensions>true</extensions>
 			</plugin>
 		</plugins>
