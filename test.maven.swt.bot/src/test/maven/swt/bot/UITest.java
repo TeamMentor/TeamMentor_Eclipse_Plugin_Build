@@ -48,7 +48,7 @@ public class UITest {
 		//assertEquals("Java - Eclipse SDK", text); // its 'Resource - Eclipse Platform' when running from eclipse				
 	}
 	
-	//@Test
+	@Test
 	public void SWTWorkbenchBot_ActionShell_ClickOnMenu() 
 	{
 		//SWTBotPreferences.PLAYBACK_DELAY = 100;
