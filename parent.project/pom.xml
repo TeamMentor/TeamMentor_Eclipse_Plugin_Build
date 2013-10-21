@@ -8,8 +8,6 @@
 
 	<modules>
 		<module>../test.maven.swt</module>
-		<module>../test.maven.swt.feature</module>
-		<module>../test.maven.swt.updateSite</module>
 		<module>../test.maven.swt.bot</module>
 	</modules>
 
@@ -25,9 +23,9 @@
 			<url>${swtbot}</url>
 		</repository>
 		<repository>
-			<id>kepler</id>
+			<id>indigo</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/kepler</url>
+			<url>http://download.eclipse.org/releases/indigo</url>
 		</repository>
 	</repositories>
 	<build>
