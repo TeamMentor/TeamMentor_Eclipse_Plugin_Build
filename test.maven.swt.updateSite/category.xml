@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-<!--   <feature url="features/test.maven.swt.feature_1.0.0.qualifier.jar" id="test.maven.swt.feature" version="1.0.0.qualifier">-->
-   <feature id="test.maven.swt.feature" version="0.0.0">
-      <category name="Test Plugin"/>
-   </feature>
-   <category-def name="Test Plugin" label="Test Plugin"/>
-</site>
