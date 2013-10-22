@@ -49,7 +49,7 @@ public class UITest {
 		List<SWTBotView> views2 = bot.views(WidgetMatcherFactory.withPartName("Package Explorer"));		
 		assertNotNull(views1);
 		assertNotNull(views2);
-		assertEquals(views1.size() + views1.size(), 1);
+		assertEquals(views1.size() + views2.size(), 1);
 	}
 	@Test
 	public void Test_Default_Views()

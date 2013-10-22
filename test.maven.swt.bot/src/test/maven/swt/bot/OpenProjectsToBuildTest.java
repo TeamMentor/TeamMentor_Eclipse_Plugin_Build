@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(SWTBotJunit4ClassRunner.class)
-public class OpenProjectsToBuild 
+public class OpenProjectsToBuildTest 
 {
 
 	protected static SWTWorkbenchBot bot;
