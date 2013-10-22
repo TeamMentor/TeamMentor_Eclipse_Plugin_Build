@@ -45,9 +45,11 @@ public class UITest {
 	@Test
 	public void Check_that_ProjectExplorer_Is_Avaialble()
 	{
-		List<SWTBotView> views = bot.views(WidgetMatcherFactory.withPartName("Project Explorer"));
-		assertNotNull(views);
-		assertEquals(views.size(), 1);
+		List<SWTBotView> views1 = bot.views(WidgetMatcherFactory.withPartName("Project Explorer"));
+		List<SWTBotView> views2 = bot.views(WidgetMatcherFactory.withPartName("Package Explorer"));		
+		assertNotNull(views1);
+		assertNotNull(views2);
+		assertEquals(views1.size() + views1.size(), 1);
 	}
 	@Test
 	public void Test_Default_Views()
