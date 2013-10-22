@@ -49,4 +49,17 @@ public class UITest {
 		assertNotNull(views);
 		assertEquals(views.size(), 1);
 	}
+	@Test
+	public void Test_Default_Views()
+	{
+		List<SWTBotView> views = bot.views();
+		assertNotNull(views);
+		assertTrue("There were no views in the current UI", views.size() > 0);
+		System.out.println("*** CurrentViews (in Test_Default_Views)");
+		for(SWTBotView view : views)
+		{
+			System.out.println(view.getTitle() + " :" + view.toString());
+		}
+		//return bot.views().collect { "\n" + it.getTitle()}
+	}
 }
