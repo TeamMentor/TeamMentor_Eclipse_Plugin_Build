@@ -2,20 +2,21 @@ package test.maven.swt.bot;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.helpers.SWTBotHelper;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
-import org.junit.BeforeClass;
 import org.junit.*;
 import org.junit.runner.RunWith;
 
 @RunWith(SWTBotJunit4ClassRunner.class)
-public class OpenTestProjectsTest 
+public class OpenPluginProjectTest 
 {
-
-	protected static SWTWorkbenchBot bot;
+	public static SWTWorkbenchBot bot;
+	public String projectPath; 
 	
 	@BeforeClass
 	public final static void beforeClass() throws Exception 
@@ -24,6 +25,32 @@ public class OpenTestProjectsTest
 		assertNotNull(bot);		
 	}
 	
+	public OpenPluginProjectTest()
+	{
+		projectPath = System.getProperty("user.home") + "/Fortify-Plugin/TeamMentor_Eclipse_Plugin";
+	}
+
+	@Test
+	public void Check_That_Project_Folder() 
+	{		
+		boolean fileExists = new File(projectPath).exists();
+		assertTrue("Could not find Folder: " + fileExists, fileExists);
+	}
+	@Test
+	public void open_Plugin_Project() 
+	{		
+		new SWTBotHelper(bot).openProject(projectPath, 3)
+							 .addDummyTaskToWorkspace();//, "TeamMentor.Eclipse.PlugIn.Fortify");		
+		
+		bot.captureScreenshot("screenshots/open_Test_Project.jpeg");
+		
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+		for(IProject project : projects)
+			System.out.println("Current projects: " + project.getName());
+	}
+
+	
+	//Load test project
 	@Ignore @Test
 	public void open_Test_Project() 
 	{		
@@ -34,21 +61,6 @@ public class OpenTestProjectsTest
 		
 
 		bot.captureScreenshot("screenshots/open_Test_Project.jpeg");
-	}
-
-	@Test
-	public void open_Plugin_Project() 
-	{		
-		String projectPath = System.getProperty("user.home") + "/Fortify-Plugin/TeamMentor_Eclipse_Plugin";
-				
-		new SWTBotHelper(bot).openProject(projectPath, 3)
-							 .addDummyTaskToWorkspace();//, "TeamMentor.Eclipse.PlugIn.Fortify");		
-		
-		bot.captureScreenshot("screenshots/open_Test_Project.jpeg");
-		
-		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
-		for(IProject project : projects)
-			System.out.println("Current projects: " + project.getName());
 	}
 
 }
