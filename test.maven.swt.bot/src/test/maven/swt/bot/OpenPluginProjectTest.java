@@ -33,8 +33,9 @@ public class OpenPluginProjectTest
 	@Test
 	public void Check_That_Project_Folder() 
 	{		
+		System.out.println("Project path: " + projectPath);
 		boolean fileExists = new File(projectPath).exists();
-		assertTrue("Could not find Folder: " + fileExists, fileExists);
+		assertTrue("Could not find Folder: " + projectPath, fileExists);
 	}
 	@Test
 	public void open_Plugin_Project() 
@@ -51,7 +52,7 @@ public class OpenPluginProjectTest
 
 	
 	//Load test project
-	@Ignore @Test
+	//@Ignore @Test
 	public void open_Test_Project() 
 	{		
 		String projectPath = "/Users/zen/Fortify-Plugin/Eclipses/workspaces/test_proj";
