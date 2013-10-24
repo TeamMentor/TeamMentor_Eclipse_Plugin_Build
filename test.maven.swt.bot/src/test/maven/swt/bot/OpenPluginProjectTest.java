@@ -40,6 +40,7 @@ public class OpenPluginProjectTest
 	@Test
 	public void open_Plugin_Project() 
 	{		
+		bot.resetWorkbench();
 		new SWTBotHelper(bot).openProject(projectPath, 3)
 							 .addDummyTaskToWorkspace();//, "TeamMentor.Eclipse.PlugIn.Fortify");		
 		
