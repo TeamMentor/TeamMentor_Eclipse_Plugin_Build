@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseFinderPlugin;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.finders.WorkbenchContentsFinder;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.helpers.SWTBotHelper;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -80,11 +81,8 @@ public class OpenPluginProjectTest
 					System.out.println("inside run inside syncExec");
 					try 
 					 {
-						SWTBotView packageExplorer = bot.viewByTitle("Package Explorer");
-						SWTBot bot = packageExplorer.bot();
-						SWTBotTree tree = bot.tree();
-						tree.getAllItems()[0].expand();												
-						System.out.println("> packageExplorer: " + packageExplorer);
+						SWTBotTree tree = bot.viewByTitle("Package Explorer").bot().tree();						
+						tree.getAllItems()[0].expand();																		
 						System.out.println("> bot: " + bot);
 						System.out.println("> tree: " + tree);
 						bot.captureScreenshot("screenshots/open_Deploy_Project_2.jpeg");
@@ -102,6 +100,11 @@ public class OpenPluginProjectTest
 						
 						bot.captureScreenshot("screenshots/open_Deploy_Project_3.jpeg");
 						
+						
+						SWTBotEditor editor = bot.editorByTitle("site.xml");
+						System.out.println("> editor " + editor);
+						editor.bot().tree().getAllItems()[0].expand();
+						bot.captureScreenshot("screenshots/open_Deploy_Project_4.jpeg");
 					} catch (Exception e1)//(PartInitException e1) 
 					{
 						// 
