@@ -72,6 +72,7 @@ public class OpenPluginProjectTest
 								 .addDummyTaskToWorkspace();
 		}	
 		System.out.println("beforeSync");
+		bot.captureScreenshot("screenshots/open_Deploy_Project_1.jpeg");
 		Display.getDefault().syncExec(new Runnable() 
 			{
 				public void run() 
@@ -82,21 +83,25 @@ public class OpenPluginProjectTest
 						SWTBotView packageExplorer = bot.viewByTitle("Package Explorer");
 						SWTBot bot = packageExplorer.bot();
 						SWTBotTree tree = bot.tree();
-						tree.getAllItems()[0].expand();
+						tree.getAllItems()[0].expand();												
 						System.out.println("> packageExplorer: " + packageExplorer);
 						System.out.println("> bot: " + bot);
 						System.out.println("> tree: " + tree);
+						bot.captureScreenshot("screenshots/open_Deploy_Project_2.jpeg");
 						System.out.println("*** before getting file data");
 						IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TeamMentor.Update.Site");
 						IFile file = project.getFile("site.xml");		 	 
 						IWorkbenchPage page = new WorkbenchContentsFinder().activeWorkbenchWindow().getActivePage();
 						System.out.println("> project: " + project);
 						System.out.println("> file: " + file);
-						System.out.println("> page: " + page);
+						System.out.println("> page: " + page);						
 						System.out.println("*** before getting file data");
 						
 						IDE.openEditor(page, file, true);
 						System.out.println("*** after caling editor");
+						
+						bot.captureScreenshot("screenshots/open_Deploy_Project_3.jpeg");
+						
 					} catch (Exception e1)//(PartInitException e1) 
 					{
 						// 
