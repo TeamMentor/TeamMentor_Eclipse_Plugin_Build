@@ -12,6 +12,7 @@ import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseFinderPlugin;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.finders.WorkbenchContentsFinder;
 import org.eclipse.swtbot.helpers.SWTBotHelper;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
@@ -55,6 +56,14 @@ public class OpenPluginProjectTest
 	@Test	
 	public void open_Deploy_Project()
 	{
+		
+		try
+		{
+			bot.viewByTitle("Welcome").close();
+		}
+		catch(WidgetNotFoundException ex) {}
+		
+		
 		new SWTBotHelper(bot).openProject(deployProjects, 1)
 		 					 .addDummyTaskToWorkspace();
 		
