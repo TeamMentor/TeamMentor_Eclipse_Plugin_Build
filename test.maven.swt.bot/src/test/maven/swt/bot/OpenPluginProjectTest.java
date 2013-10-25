@@ -101,20 +101,13 @@ public class OpenPluginProjectTest
 						bot.captureScreenshot("screenshots/open_Deploy_Project_3.jpeg");
 						
 						
-						SWTBot editor = bot.editorByTitle("site.xml").bot();
-						System.out.println("> editor " + editor);
+						//SWTBot editor = bot.editorByTitle("site.xml").bot();
+						//System.out.println("> editor " + editor);
 						
-						editor.tree().getAllItems()[0].expand();
+						//editor.tree().getAllItems()[0].expand();
 						
 						bot.sleep(1000);
-						bot.captureScreenshot("screenshots/open_Deploy_Project_4.jpeg");
-						
-						editor.button("Synchronize...").click();																	
-						bot.shell("Feature Properties").activate();						
-						bot.captureScreenshot("screenshots/open_Deploy_Project_5.jpeg");
-						bot.button("Finish").click();
-						bot.sleep(1000);
-						bot.captureScreenshot("screenshots/open_Deploy_Project_5.jpeg");
+						bot.captureScreenshot("screenshots/open_Deploy_Project_4.jpeg");											
 						
 					} catch (Exception e1)//(PartInitException e1) 
 					{
@@ -125,6 +118,13 @@ public class OpenPluginProjectTest
 			});
 
 		 //new SWTBotHelper(bot).addDummyTaskToWorkspace();*/
+		SWTBot editor = bot.editorByTitle("site.xml").bot();
+		editor.button("Synchronize...").click();																	
+		bot.shell("Feature Properties").activate();						
+		bot.captureScreenshot("screenshots/open_Deploy_Project_5.jpeg");
+		bot.button("Finish").click();
+		bot.sleep(1000);
+		bot.captureScreenshot("screenshots/open_Deploy_Project_5.jpeg");
 		
 		 bot.captureScreenshot("screenshots/open_Deploy_Project.jpeg");
 	}
