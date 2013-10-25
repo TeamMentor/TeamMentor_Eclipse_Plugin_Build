@@ -53,7 +53,7 @@ public class OpenPluginProjectTest
 		assertTrue("Could not find Folder: " + projectPath, fileExists);
 	}
 	
-	//@Test	
+	@Test	
 	public void open_Deploy_Project()
 	{		
 		try
@@ -68,11 +68,12 @@ public class OpenPluginProjectTest
 			new SWTBotHelper(bot).openProject(deployProjects, 1)
 								 .addDummyTaskToWorkspace();
 		}	
-
+		System.out.println("beforeSync");
 		Display.getDefault().syncExec(new Runnable() 
 			{
 				public void run() 
 				{
+					System.out.println("inside run inside syncExec");
 					try 
 					 {
 						bot.viewByTitle("Package Explorer").bot().tree().getAllItems()[0].expand();
