@@ -18,6 +18,8 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -89,10 +91,10 @@ public class OpenPluginProjectTest
 					System.out.println("inside run inside syncExec");
 					try 
 					 {
-						SWTBotTree tree = bot.viewByTitle("Package Explorer").bot().tree();						
-						tree.getAllItems()[0].expand();																		
-						System.out.println("> bot: " + bot);
-						System.out.println("> tree: " + tree);
+						//SWTBotTree tree = bot.viewByTitle("Package Explorer").bot().tree();						
+						//tree.getAllItems()[0].expand();																		
+						//System.out.println("> bot: " + bot);
+						//System.out.println("> tree: " + tree);
 						bot.captureScreenshot("screenshots/open_Deploy_Project_2.jpeg");
 						System.out.println("*** before getting file data");
 						IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TeamMentor.Update.Site");
@@ -126,18 +128,56 @@ public class OpenPluginProjectTest
 			});
 
 		 //new SWTBotHelper(bot).addDummyTaskToWorkspace();*/
-		SWTBot editor = bot.editorByTitle("site.xml").bot();
-		editor.button("Synchronize...").click();																	
-		bot.shell("Feature Properties").activate();						
+		SWTBotEditor editor = bot.editorByTitle("site.xml");
+		editor.setFocus();
+		SWTBot editorBot = bot.editorByTitle("site.xml").bot();
+		SWTBotButton synchronize = editorBot.button("Synchronize...");
+		
+		
+		synchronize.click();
+		bot.shell("Feature Properties").activate();					
+		
+		
 		bot.captureScreenshot("screenshots/open_Deploy_Project_5.jpeg");
 		bot.button("Finish").click();
 		bot.sleep(1000);
 		bot.captureScreenshot("screenshots/open_Deploy_Project_5.jpeg");
+		//waitForView("ABC");
+		new SWTBotHelper(bot).addDummyTaskToWorkspace();
+		System.out.println("*** Before Build All click");
 		
-		 bot.captureScreenshot("screenshots/open_Deploy_Project.jpeg");
+		
+		editor = bot.editorByTitle("site.xml");			// get reference again
+		editor.setFocus();
+		SWTBotButton buildAll = editorBot.button("Build All");
+		buildAll.click();
+		
+		new SWTBotHelper(bot).addDummyTaskToWorkspace();
+		System.out.println("*** After Build All click");
+		bot.sleep(2000);
+		System.out.println("*** After 2 sec sleep");
+		bot.captureScreenshot("screenshots/open_Deploy_Project.jpeg");
 	}
 	
-	
+	public void waitForView(String viewName)
+	{
+		System.out.println("*** Starting waitForView: " + viewName);
+		final SWTWorkbenchBot eBot = bot;
+		eBot.waitUntil( new DefaultCondition()
+        {
+            public boolean test() throws Exception
+            {
+                return eBot.viewByTitle( "Connections" ) != null;
+            }
+
+
+            public String getFailureMessage()
+            {
+                return "Could not find widget";
+            }
+        } );
+		System.out.println("*** Ended waitForView: " + viewName);
+	}
 	
 	public void open_Plugin_Project() 
 	{

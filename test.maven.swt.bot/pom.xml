@@ -12,6 +12,19 @@
 		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../parent.project</relativePath>
 	</parent>
+	<repositories>
+		<repository>
+			<id>groovy-eclipse</id>
+			<layout>p2</layout>
+			<url>http://dist.codehaus.org/groovy/distributions/greclipse/snapshot/e3.7</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -22,8 +35,20 @@
 				<configuration>
 					<dependencies>
 						<dependency><type>p2-installable-unit</type><artifactId>org.eclipse.sdk.feature.group</artifactId></dependency>
-						
-														
+						<dependency>
+		                          <type>eclipse-feature</type>
+		                          <artifactId>org.codehaus.groovy.eclipse.feature</artifactId>
+		                          <version>0.0.0</version>
+		                </dependency>
+		                <dependency>
+		                          <type>eclipse-feature</type>
+		                          <artifactId>org.codehaus.groovy.jdt.patch</artifactId>
+		                          <version>0.0.0</version>
+		                </dependency>
+		                <dependency><type>p2-installable-unit</type><artifactId>org.eclipse.rcp.feature.group</artifactId><version>3.7.2</version></dependency>
+		                <!-- 
+		                <dependency><type>p2-installable-unit</type><artifactId>org.junit.feature.group</artifactId> <version>0.0.0</version> </dependency> 				            
+						 -->							
 <!--
 						<dependency><type>p2-installable-unit</type><artifactId>org.eclipse.pde.feature.group</artifactId></dependency>
 						<dependency><type>p2-installable-unit</type><artifactId>org.eclipse.pde.feature.group</artifactId><version>3.7.2</version></dependency> 	
