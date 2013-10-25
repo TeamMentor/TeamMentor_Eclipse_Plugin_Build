@@ -4,19 +4,32 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swtbot.eclipse.finder.SWTBotEclipseFinderPlugin;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
+import org.eclipse.swtbot.eclipse.finder.finders.WorkbenchContentsFinder;
 import org.eclipse.swtbot.helpers.SWTBotHelper;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
+import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.junit.*;
 import org.junit.runner.RunWith;
+import org.eclipse.ui.ide.IDE;
 
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class OpenPluginProjectTest 
 {
 	public static SWTWorkbenchBot bot;
 	public String projectPath; 
+	public String deployProjects;
 	
 	@BeforeClass
 	public final static void beforeClass() throws Exception 
@@ -27,22 +40,57 @@ public class OpenPluginProjectTest
 	
 	public OpenPluginProjectTest()
 	{
-		projectPath = System.getProperty("user.home") + "/Fortify-Plugin/TeamMentor_Eclipse_Plugin";
+		projectPath = System.getProperty("user.home") + "/TeamMentor_Eclipse_Plugin";
+		deployProjects = System.getProperty("user.home") + "/TeamMentor_Eclipse_Plugin_Deploy";
 	}
 
 	@Test
-	public void Check_That_Project_Folder() 
+	public void Check_That_Project_Folder_Exists() 
 	{		
 		System.out.println("Project path: " + projectPath);
 		boolean fileExists = new File(projectPath).exists();
 		assertTrue("Could not find Folder: " + projectPath, fileExists);
 	}
-	@Test
+	
+	@Test	
+	public void open_Deploy_Project()
+	{
+		new SWTBotHelper(bot).openProject(deployProjects, 1)
+		 					 .addDummyTaskToWorkspace();
+		
+		Display.getDefault().syncExec(new Runnable() 
+			{
+				public void run() 
+				{
+					try 
+					 {
+			
+						IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TeamMentor.Update.Site");
+						IFile file = project.getFile("site.xml");		 	 
+						 IWorkbenchPage page = new WorkbenchContentsFinder().activeWorkbenchWindow().getActivePage();
+						 
+						 IDE.openEditor(page, file, true);
+					} catch (PartInitException e1) 
+					{
+						// 
+						e1.printStackTrace();
+					}
+				}
+			});
+
+		 new SWTBotHelper(bot).addDummyTaskToWorkspace();
+		 bot.captureScreenshot("screenshots/open_Deploy_Project.jpeg");
+	}
+	
+	
+	//@Test
 	public void open_Plugin_Project() 
-	{		
-		bot.resetWorkbench();
+	{
+		//bot.resetWorkbench();
+		open_Plugin_Project();
+
 		new SWTBotHelper(bot).openProject(projectPath, 3)
-							 .addDummyTaskToWorkspace();//, "TeamMentor.Eclipse.PlugIn.Fortify");		
+							 .addDummyTaskToWorkspace();//, "TeamMentor.Eclipse.PlugIn.Fortify");				
 		
 		bot.captureScreenshot("screenshots/open_Test_Project.jpeg");
 		
@@ -50,10 +98,35 @@ public class OpenPluginProjectTest
 		for(IProject project : projects)
 			System.out.println("Current projects: " + project.getName());
 	}
+	
+	 
+	@Ignore
+	public void open_Plugin_Project_and_Add_UpdateSite()
+	{
+		
+	}
+	
 
+	@Test
+	@Ignore
+	public void check_that_Update_Site_Import_is_Avaialble()
+	{
+		
+	//	SWTBotPreferences.TIMEOUT = 500000;
+		SWTBotMenu importMenu = bot.menu("File").menu("Import...");
+		importMenu.click();
+		SWTBotShell shell = bot.shell("Import");
+		assertNotNull(shell);
+		shell.activate();
+		bot.tree().expandNode("Plug-in Development")
+				  .select("Update Site Project");
+		shell.close();
+	}
+	
 	
 	//Load test project
-	//@Ignore @Test
+	//@Ignore
+	//@Test
 	public void open_Test_Project() 
 	{		
 		String projectPath = "/Users/zen/Fortify-Plugin/Eclipses/workspaces/test_proj";
