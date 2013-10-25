@@ -68,23 +68,21 @@ public class OpenPluginProjectTest
 			new SWTBotHelper(bot).openProject(deployProjects, 1)
 								 .addDummyTaskToWorkspace();
 		}	
-		
-		
-		bot.viewByTitle("Package Explorer").bot().tree().getAllItems()[0].expand();
-		
-		/*Display.getDefault().syncExec(new Runnable() 
+
+		Display.getDefault().syncExec(new Runnable() 
 			{
 				public void run() 
 				{
 					try 
 					 {
-			
-						IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TeamMentor.Update.Site");
-						IFile file = project.getFile("site.xml");		 	 
-						 IWorkbenchPage page = new WorkbenchContentsFinder().activeWorkbenchWindow().getActivePage();
+						bot.viewByTitle("Package Explorer").bot().tree().getAllItems()[0].expand();
+						
+						//IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TeamMentor.Update.Site");
+						//IFile file = project.getFile("site.xml");		 	 
+						 //IWorkbenchPage page = new WorkbenchContentsFinder().activeWorkbenchWindow().getActivePage();
 						 
-						 IDE.openEditor(page, file, true);
-					} catch (PartInitException e1) 
+						 //IDE.openEditor(page, file, true);
+					} catch (Exception e1)//(PartInitException e1) 
 					{
 						// 
 						e1.printStackTrace();
@@ -92,7 +90,7 @@ public class OpenPluginProjectTest
 				}
 			});
 
-		 new SWTBotHelper(bot).addDummyTaskToWorkspace();*/
+		 //new SWTBotHelper(bot).addDummyTaskToWorkspace();*/
 		
 		 bot.captureScreenshot("screenshots/open_Deploy_Project.jpeg");
 	}
