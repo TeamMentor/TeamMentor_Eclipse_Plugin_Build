@@ -130,7 +130,7 @@ public class OpenPluginProjectTest
 	}
 	
 	
-	//@Test
+	@Test
 	public void open_Plugin_Project() 
 	{
 		//bot.resetWorkbench();
