@@ -55,17 +55,19 @@ public class OpenPluginProjectTest
 	
 	@Test	
 	public void open_Deploy_Project()
-	{
-		
+	{		
 		try
 		{
 			bot.viewByTitle("Welcome").close();
 		}
 		catch(WidgetNotFoundException ex) {}
 		
-		
-		new SWTBotHelper(bot).openProject(deployProjects, 1)
-		 					 .addDummyTaskToWorkspace();
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TeamMentor.Update.Site");
+		if(project != null && project.exists()==false)
+		{
+			new SWTBotHelper(bot).openProject(deployProjects, 1)
+								 .addDummyTaskToWorkspace();
+		}	
 		
 		Display.getDefault().syncExec(new Runnable() 
 			{
