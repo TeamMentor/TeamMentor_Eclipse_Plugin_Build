@@ -60,14 +60,22 @@ public class OpenPluginProjectTest
 	@Test	
 	public void open_Deploy_Project()
 	{		
+
 		try
 		{
 			bot.viewByTitle("Welcome").close();
 		}
 		catch(WidgetNotFoundException ex) {}
+
+		IProject project1 = ResourcesPlugin.getWorkspace().getRoot().getProject("TeamMentor.Feature");
+		if(project1 != null && project1.exists()==false)
+		{
+			open_Plugin_Project();
+		}
 		
-		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("TeamMentor.Update.Site");
-		if(project != null && project.exists()==false)
+		
+		IProject project2 = ResourcesPlugin.getWorkspace().getRoot().getProject("TeamMentor.Update.Site");
+		if(project2 != null && project2.exists()==false)
 		{
 			new SWTBotHelper(bot).openProject(deployProjects, 1)
 								 .addDummyTaskToWorkspace();
@@ -130,7 +138,7 @@ public class OpenPluginProjectTest
 	}
 	
 	
-	@Test
+	
 	public void open_Plugin_Project() 
 	{
 		//bot.resetWorkbench();
