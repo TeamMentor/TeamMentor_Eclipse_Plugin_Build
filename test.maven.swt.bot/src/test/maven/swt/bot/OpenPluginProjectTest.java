@@ -69,7 +69,10 @@ public class OpenPluginProjectTest
 								 .addDummyTaskToWorkspace();
 		}	
 		
-		Display.getDefault().syncExec(new Runnable() 
+		
+		bot.viewByTitle("Package Explorer").bot().tree().getAllItems()[0].expand();
+		
+		/*Display.getDefault().syncExec(new Runnable() 
 			{
 				public void run() 
 				{
@@ -89,7 +92,8 @@ public class OpenPluginProjectTest
 				}
 			});
 
-		 new SWTBotHelper(bot).addDummyTaskToWorkspace();
+		 new SWTBotHelper(bot).addDummyTaskToWorkspace();*/
+		
 		 bot.captureScreenshot("screenshots/open_Deploy_Project.jpeg");
 	}
 	
