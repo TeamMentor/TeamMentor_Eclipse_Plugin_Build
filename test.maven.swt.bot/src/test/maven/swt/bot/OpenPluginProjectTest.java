@@ -53,7 +53,7 @@ public class OpenPluginProjectTest
 		assertTrue("Could not find Folder: " + projectPath, fileExists);
 	}
 	
-	@Test	
+	//@Test	
 	public void open_Deploy_Project()
 	{		
 		try
