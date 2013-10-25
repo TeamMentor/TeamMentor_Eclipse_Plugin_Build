@@ -20,14 +20,21 @@
 			<id>swtbot</id>
 			<layout>p2</layout>
 			<url>${swtbot}</url>
+			<snapshots>
+			 <updatePolicy>daily</updatePolicy>
+			 </snapshots>
 		</repository>
 		<repository>
 			<id>indigo</id>
 			<layout>p2</layout>
 			<url>http://download.eclipse.org/releases/indigo</url>
+			<snapshots>
+			 <updatePolicy>daily</updatePolicy>
+			 </snapshots>
 		</repository>
 	</repositories>
 	<build>
+	
 		<plugins>
 			<!-- tycho-maven-plugin -->
 			<plugin>
