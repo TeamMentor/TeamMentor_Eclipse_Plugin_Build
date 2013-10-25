@@ -103,12 +103,16 @@ public class OpenPluginProjectTest
 						
 						SWTBot editor = bot.editorByTitle("site.xml").bot();
 						System.out.println("> editor " + editor);
+						
 						editor.tree().getAllItems()[0].expand();
+						
 						bot.sleep(1000);
 						bot.captureScreenshot("screenshots/open_Deploy_Project_4.jpeg");
 						
-						editor.button("Synchronize...").click();
+						editor.button("Synchronize...").click();																	
+						bot.shell("Feature Properties").activate();						
 						bot.captureScreenshot("screenshots/open_Deploy_Project_5.jpeg");
+						bot.button("Finish").click();
 						bot.sleep(1000);
 						bot.captureScreenshot("screenshots/open_Deploy_Project_5.jpeg");
 						
