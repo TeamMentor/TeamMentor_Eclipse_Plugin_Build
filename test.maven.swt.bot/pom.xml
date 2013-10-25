@@ -32,7 +32,48 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>0.18.1</version>
+				
 				<configuration>
+ 			 
+				 <bundleStartLevel>  
+                <bundle>
+              <id>org.eclipse.core.runtime</id>
+              <level>4</level>
+              <autoStart>false</autoStart>
+            </bundle>
+            <bundle>
+              <id>org.eclipse.core.resources</id>
+              <level>4</level>
+              <autoStart>false</autoStart>
+            </bundle>          
+            <bundle>
+              <id>org.eclipse.ui.editors</id>
+              <level>4</level>
+              <autoStart>false</autoStart>
+            </bundle>
+            <bundle>
+              <id>org.eclipse.ui.ide</id>
+              <level>4</level>
+              <autoStart>false</autoStart>
+            </bundle>
+            <bundle>
+              <id>org.eclipse.jdt.core</id>
+              <level>4</level>
+              <autoStart>false</autoStart>
+            </bundle>        
+            <bundle>
+              <id>org.eclipse.jface.text</id>
+              <level>4</level>
+              <autoStart>false</autoStart>
+            </bundle>           
+            <bundle>
+              <id>org.junit</id>
+              <level>4</level>
+              <autoStart>false</autoStart>
+            </bundle>
+                        
+          </bundleStartLevel> 
+          
 					<dependencies>
 						<dependency><type>p2-installable-unit</type><artifactId>org.eclipse.sdk.feature.group</artifactId></dependency>
 						<dependency>
@@ -46,6 +87,48 @@
 		                          <version>0.0.0</version>
 		                </dependency>
 		                <dependency><type>p2-installable-unit</type><artifactId>org.eclipse.rcp.feature.group</artifactId><version>3.7.2</version></dependency>
+		                
+		                
+		                <dependency><type>eclipse-plugin</type><artifactId>org.eclipse.jface</artifactId><version>3.7.0</version></dependency>
+		                <dependency><type>eclipse-plugin</type><artifactId>org.eclipse.jface.text</artifactId><version>3.7.2</version></dependency>
+    
+		                  <dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.eclipse.core.runtime</artifactId>
+              <version>0.0.0</version>
+            </dependency>   
+            <dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.eclipse.core.resources</artifactId>
+              <version>0.0.0</version>
+            </dependency>        
+            <dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.eclipse.ui.editors</artifactId>
+              <version>0.0.0</version>
+            </dependency>
+            <dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.eclipse.ui.ide</artifactId>
+              <version>0.0.0</version>
+            </dependency>
+            <dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.eclipse.jdt.core</artifactId>
+              <version>3.7.3</version>
+            </dependency>            
+            <dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.eclipse.jface.text</artifactId>
+              <version>3.7.2</version>
+            </dependency>            
+            <dependency>
+              <type>eclipse-plugin</type>
+              <artifactId>org.junit </artifactId>
+              <version>0.0.0</version>
+            </dependency> 
+		                
+		                
 		                <!-- 
 		                <dependency><type>p2-installable-unit</type><artifactId>org.junit.feature.group</artifactId> <version>0.0.0</version> </dependency> 				            
 						 -->							
