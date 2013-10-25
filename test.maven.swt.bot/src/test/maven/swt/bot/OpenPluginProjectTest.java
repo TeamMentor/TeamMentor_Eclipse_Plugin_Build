@@ -97,14 +97,21 @@ public class OpenPluginProjectTest
 						
 						IDE.openEditor(page, file, true);
 						System.out.println("*** after caling editor");
-						
+						bot.sleep(1000);
 						bot.captureScreenshot("screenshots/open_Deploy_Project_3.jpeg");
 						
 						
-						SWTBotEditor editor = bot.editorByTitle("site.xml");
+						SWTBot editor = bot.editorByTitle("site.xml").bot();
 						System.out.println("> editor " + editor);
-						editor.bot().tree().getAllItems()[0].expand();
+						editor.tree().getAllItems()[0].expand();
+						bot.sleep(1000);
 						bot.captureScreenshot("screenshots/open_Deploy_Project_4.jpeg");
+						
+						editor.button("Synchronize...").click();
+						bot.captureScreenshot("screenshots/open_Deploy_Project_5.jpeg");
+						bot.sleep(1000);
+						bot.captureScreenshot("screenshots/open_Deploy_Project_5.jpeg");
+						
 					} catch (Exception e1)//(PartInitException e1) 
 					{
 						// 
